@@ -1,0 +1,12 @@
+<template>
+  <section class="au-animate">
+      <h2>${heading}</h2>
+      <div class="row au-stagger">
+        <div class="col-sm-6 col-md-3 card-container au-animate" repeat.for="entry of entries">
+                <div class="content">
+                    <p class="name">${entry.id} ${entry.class}</p>
+                </div>
+        </div>
+      </div>
+  </section>
+</template>
