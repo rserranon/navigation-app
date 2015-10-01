@@ -14,8 +14,7 @@ export class Entries{
         .withDefaults({
             headers: {
                 'Accept': 'application/json',
-                'X-Requested-With': 'Fetch',
-                'Access-Control-Allow-Origin': 'http://rsn.com'
+                'X-Requested-With': 'Fetch'
             }
         })
         .withInterceptor({
