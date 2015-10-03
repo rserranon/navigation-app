@@ -3,8 +3,8 @@ import {HttpClient} from 'aurelia-fetch-client';
 import 'fetch';
 
 @inject(HttpClient)
-export class Entries{
-  heading = 'Entries';
+export class Timeline{
+  heading = 'Timeline';
   entries = [];
 
   constructor(http){
