@@ -245,6 +245,7 @@ th {
     page-break-after: avoid;
   }
   .navbar {
+    z-index: 9999;
     display: none;
   }
   .btn > .caret,
@@ -4231,6 +4232,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
 }
 .navbar-collapse {
+  z-index: 9999;
   overflow-x: visible;
   padding-right: 15px;
   padding-left: 15px;
@@ -4372,6 +4374,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
 }
 .navbar-nav {
+  z-index: 9999;
   margin: 7.5px -15px;
 }
 .navbar-nav > li > a {
@@ -4544,6 +4547,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
 }
 .navbar-default {
+  z-index: 9999;
   background-color: #6eb86e;
   border-color: #58ad58;
 }

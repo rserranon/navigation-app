@@ -5,14 +5,16 @@
       <div class="well bs-component">
         <form class="form-horizontal">      
           <fieldset> 
-            <legend>Diagnóstico</legend>
+            <legend><i class="${fontAwesomeIcon}"></i> ${entryType}</legend>
             <div class="form-group">
               <div class="col-md-4">
-                <button type="reset" class="btn btn-primary btn-xs" click.trigger="toggleVisit()">Visit</button>
-                <button type="reset" class="btn btn-success btn-xs">Study</button>        
-                <button type="reset" class="btn btn-info    btn-xs" click.trigger="toggleDiagnose()">Diagnose</button>
-                <button type="reset" class="btn btn-warning btn-xs">Treatment</button>
-                <button type="reset" class="btn btn-danger btn-xs">Procedure</button>
+              </div>  
+              <div class="col-md-4">
+                <button type="button" class="btn btn-primary btn-xs" click.trigger="toggleVisit()">Visit</button>
+                <button type="button" class="btn btn-success btn-xs" click.trigger="toggleStudy()">Study</button>        
+                <button type="button" class="btn btn-info    btn-xs" click.trigger="toggleDiagnose()">Diagnose</button>
+                <button type="button" class="btn btn-warning btn-xs" click.trigger="toggleTreatment()">Treatment</button>
+                <button type="button" class="btn btn-danger  btn-xs" click.trigger="toggleProcedure()">Procedure</button>
               </div>
             </div>  
             <div class="form-group">
@@ -29,7 +31,7 @@
             <div class="form-group">
               <label for="inputEntryDate" class="col-lg-2 control-label">Date</label>
               <div class="col-lg-10">
-                <input class="form-control" id="inputEntryDate" placeholder="Date" type="password">
+                <input class="form-control" id="inputEntryDate" placeholder="Date" type="datetime">
                 <div class="checkbox">
                   <label>
                     <input type="checkbox"> Checkbox
@@ -37,18 +39,36 @@
                 </div>
               </div>
             </div>
-            <div show.bind="isDiagnose" class="form-group">
-              <label for="inputDiagnose" class="col-lg-2 control-label">Diagnose</label>
-              <div class="col-lg-10">
-                <input class="form-control" id="inputDiagnose" placeholder="Email" type="text">
-              </div>
-            </div>
             <div show.bind="isVisit" class="form-group">
               <label for="inputVisit" class="col-lg-2 control-label">Visit</label>
               <div class="col-lg-10">
-                <input class="form-control" id="inputVisit" placeholder="Email" type="text">
+                <input class="form-control" id="inputVisit" placeholder="Type visit prupose.." type="text">
               </div>
             </div>
+            <div show.bind="isStudy" class="form-group">
+              <label for="inputStudy" class="col-lg-2 control-label">Study</label>
+              <div class="col-lg-10">
+                <input class="form-control" id="inputStudy" placeholder="Type study name  ..." type="text">
+              </div>
+            </div>
+            <div show.bind="isDiagnose" class="form-group">
+              <label for="inputDiagnose" class="col-lg-2 control-label">Diagnose</label>
+              <div class="col-lg-10">
+                <input class="form-control" id="inputDiagnose" placeholder="Type diagnose name..." type="text">
+              </div>
+            </div>
+            <div show.bind="isTreatment" class="form-group">
+              <label for="inputTreatment" class="col-lg-2 control-label">Treatment</label>
+              <div class="col-lg-10">
+                <input class="form-control" id="inputTreatment" placeholder="Type treatment name ..." type="text">
+              </div>
+            </div>
+            <div show.bind="isProcedure" class="form-group">
+              <label for="inputProcedure" class="col-lg-2 control-label">Prodecure</label>
+              <div class="col-lg-10">
+                <input class="form-control" id="inputProcedure" placeholder="Type procedure name ..." type="text">
+              </div>
+            </div>            
             <div class="form-group">
               <label for="inputSummary" class="col-lg-2 control-label">Summary</label>
               <div class="col-lg-10">
@@ -95,7 +115,7 @@
             <div class="form-group">
               <div class="col-lg-10 col-lg-offset-2">
                 <button type="reset" class="btn btn-default">Cancel</button>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">button</button>
               </div>
             </div>
           </fieldset>
