@@ -13,7 +13,7 @@ export class Doctor{
   	http.configure(config => {
       config
         .useStandardConfiguration()
-        .withBaseUrl('http://localhost:8080/');
+        .withBaseUrl('http://localhost:8080/person/');
     });
     this.http = http;
 
@@ -31,24 +31,28 @@ export class Doctor{
   }
 
   addDoctor() {
-  	if (this.drName != '' && this.lastName != '') {
+  	      if (this.drName != '' && this.lastName != '') {
 	      var datos = {'name': this.drName, 'lastName': this.lastName, 'type': this.personType};
-	      return this.http.fetch('person/save', {
+	      return this.http.fetch('save', {
 	        method: 'POST',
 	        headers: { "Accept": "application/json", "Content-Type": "application/json"},
 	        body: JSON.stringify(datos)
-	      }) 
-        .then(response => { 
-          this.drName = '';
-          this.lastName = '';
-          this.doctorChanged();  
-        })
-        .catch( function(err) {
-          console.error ("Vivany ERROR", err)
-        })      
-                 
-	   }
+	      });
+	      this.drName = '';
+    	  this.lastName = '';    
+	  }
   }
+
+  addTodo() {
+    if (this.newTodo != '') {
+      this.todos.push({
+        title: this.newTodo,
+        completed: false
+      });
+      this.todoChanged();
+      this.newTodo = '';
+    }      
+  }	
 
   removeTodo(todo) {
     var idx = this.todos.indexOf(todo);
@@ -84,14 +88,17 @@ export class Doctor{
     };
   }
 
-  doctorChanged() {
-      return this.http.fetch('person/index.json', {
-          method: 'GET',
-          headers: { "Accept": "application/json", "Content-Type": "application/json"}
-        })
-      .then(response => response.json())
-      .then(persons  => this.doctors = persons);
-
+  todoChanged() {
+    var countRemaining = 0;
+    var countCompleted = 0;
+    this.todos.forEach(function (item) {
+      if (!item.completed) 
+        countRemaining++; 
+      else 
+        countCompleted++;
+    });
+    this.remainingCount = countRemaining;
+    this.completedCount = countCompleted;
   }
 
   activate(){
