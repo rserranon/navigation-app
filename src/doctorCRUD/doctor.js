@@ -21,7 +21,8 @@ export class Doctor{
     this.drName = '';
     this.lastName = '';
     this.personType = 'doctor';
-
+    this.doctorChanged();
+    
     this.newTodo = '';
     this.todos = [];
     this.remainingCount = 0;
@@ -85,7 +86,7 @@ export class Doctor{
   }
 
   doctorChanged() {
-      return this.http.fetch('person/index.json', {
+      return this.http.fetch('person/doctors.json', {
           method: 'GET',
           headers: { "Accept": "application/json", "Content-Type": "application/json"}
         })
