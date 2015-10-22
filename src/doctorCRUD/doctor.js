@@ -15,6 +15,7 @@ export class Doctor{
         .useStandardConfiguration()
         .withBaseUrl('http://localhost:8080/');
     });
+
     this.http = http;
 
     // Doctor Class variables
@@ -38,7 +39,8 @@ export class Doctor{
           this.doctorChanged();  
         })
         .catch( function(err) {
-          console.error ("Vivany ERROR", err)
+          alert("ERROR de comunicación con servicios");
+          console.error ("Vivany ERROR", err);
         })      
                  
 	   }
@@ -52,7 +54,8 @@ export class Doctor{
     })
     .then( response => this.doctorChanged() )
     .catch( function(err) {
-        console.error ("Vivany ERROR", err)
+        alert("ERROR de comunicación con servicios");
+        console.error ("Vivany ERROR", err);
     })
 
   }
@@ -63,6 +66,7 @@ export class Doctor{
           headers: { "Accept": "application/json", "Content-Type": "application/json"}
         })
       .catch( function(err) {
+          alert("ERROR de comunicación con servicios");
           console.error ("Vivany ERROR", err)
       })
       .then(response => response.json())
