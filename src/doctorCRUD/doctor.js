@@ -22,13 +22,6 @@ export class Doctor{
     this.lastName = '';
     this.personType = 'doctor';
     this.doctorChanged();
-
-    this.newTodo = '';
-    this.todos = [];
-    this.remainingCount = 0;
-    this.completedCount = 0;
-    this.editedTodo = {title: '', completed: false};
-    this.allChecked = false;
   }
 
   addDoctor() {
@@ -62,34 +55,6 @@ export class Doctor{
         console.error ("Vivany ERROR", err)
     })
 
-  }
-
-  editTodo(todo) {
-    this.editedTodo = todo;
-  }
-
-  markAll(allChecked) {
-    if (allChecked) {
-      this.todos.forEach(function (item) {
-        item.completed = true;
-      });
-    } else {
-      this.todos.forEach(function (item) {
-        item.completed = false;
-      });
-    }
-    this.todoChanged();
-  }
-
-  clearCompleted() {
-    for (var i = this.todos.length - 1; i >= 0; i--) {
-      if (this.todos[i]) {
-        if (this.todos[i].completed) {
-          this.todos.splice(i, 1);
-          i++;
-        }
-      }
-    };
   }
 
   doctorChanged() {
