@@ -22,7 +22,7 @@ export class Doctor{
     this.lastName = '';
     this.personType = 'doctor';
     this.doctorChanged();
-    
+
     this.newTodo = '';
     this.todos = [];
     this.remainingCount = 0;
@@ -51,10 +51,17 @@ export class Doctor{
 	   }
   }
 
-  removeTodo(todo) {
-    var idx = this.todos.indexOf(todo);
-    this.todos.splice(idx, 1);
-    this.todoChanged();
+  removeDoctor(doctor) {
+    console.log ('Id: ' + doctor.id);
+    return this.http.fetch('person/delete/'+doctor.id, {
+      method: 'DELETE',
+      headers: { "Accept": "application/json", "Content-Type": "application/json"}
+    })
+    .then( response => this.doctorChanged() )
+    .catch( function(err) {
+        console.error ("Vivany ERROR", err)
+    })
+
   }
 
   editTodo(todo) {
@@ -90,8 +97,12 @@ export class Doctor{
           method: 'GET',
           headers: { "Accept": "application/json", "Content-Type": "application/json"}
         })
+      .catch( function(err) {
+          console.error ("Vivany ERROR", err)
+      })
       .then(response => response.json())
-      .then(persons  => this.doctors = persons);
+      .then(persons  => this.doctors = persons)
+      
 
   }
 
