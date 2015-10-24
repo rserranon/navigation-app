@@ -1,0 +1,26 @@
+<template>
+<section class="au-animate">
+    <header id="header">
+        <h2>${heading}</h2>
+        <form role="form" submit.delegate="addDoctor()">
+            <input id="drName" 	 placeholder="Type Dr. Name..."  value.bind="drName">
+            <input id="lastName" placeholder="Type Dr. Last Name..." value.bind="lastName">
+            <button type="submit" class="btn btn-primary btn-xs">Save</button>
+        </form>        
+    </header>
+    <!-- This section should be hidden by default and shown when there are Doctors -->
+    <br></br>
+    <section id="main">
+            <ul id="todo-list">                 
+                <li repeat.for="doctor of doctors">
+                    <div class="view" >
+                        <label>${doctor.name} ${doctor.lastName}</label>   
+                        <button class="btn btn-danger btn-xs" click.delegate="$parent.removeDoctor(doctor)">
+                            <i class="fa fa-trash-o"></i>
+                        </button>
+                    </div>
+                </li>
+            </ul>
+    </section>
+</section>
+</template>
