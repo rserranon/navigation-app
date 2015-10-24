@@ -57,4 +57,16 @@ export class Entry{
 		this.entryType = 'Procedure';
 		this.fontAwesomeIcon = 'fa fa-ambulance';	
 	};	
+
+	fileSelected() {
+    let reader = new FileReader();
+    let file = this.$event.target.files[0];
+    reader.readAsDataURL(file);
+    this.fileName = file.name;
+    console.log ("File Name: " + this.fileName);
+    reader.onload = () => {
+        this.file = reader.result;
+    };
+    console.log ("File Content: " + this.file);
+}
 }
