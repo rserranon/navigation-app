@@ -21,6 +21,7 @@ export class Entry{
 	activate(){
 		this.resetEntries();
 		this.isVisit = true;
+		this.imageLoading = false;
 	};
 
 	toggleVisit () {
@@ -59,14 +60,17 @@ export class Entry{
 	};	
 
 	fileSelected() {
+    this.imageLoading = true;
     let reader = new FileReader();
     let file = this.$event.target.files[0];
     reader.readAsDataURL(file);
     this.fileName = file.name;
     console.log ("File Name: " + this.fileName);
     reader.onload = () => {
+        //this.imageLoading = false;  // we need to find a place later in the flow to deactivate imageLoading
         this.file = reader.result;
+        console.log ("File Content: " + this.file);
     };
-    console.log ("File Content: " + this.file);
+    
 }
 }
