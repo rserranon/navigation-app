@@ -1,28 +1,32 @@
 export class Entry{
-	heading = 'Entry';
+	heading = 'Entry'
 
-	entryType = 'Visit';
-	fontAwesomeIcon = 'fa fa-hospital-o';
+	entryType = 'Visit'
+	fontAwesomeIcon = 'fa fa-hospital-o'
 
-	isVisit		 = false;
-	isDiagnose   = false;
-	isStudy	  	 = false;
-	isTreatment  = false;
-	isProcedure  = false;
+	isVisit		 = false
+	isDiagnose   = false
+	isStudy	  	 = false
+	isTreatment  = false
+	isProcedure  = false
+
+	constructor() {
+      this.file = ''	
+    }
 
 	resetEntries () {
-		this.isVisit	  = false;
-		this.isDiagnose   = false;
-		this.isStudy	  = false;
-		this.isTreatment  = false;
-		this.isProcedure  = false;
-	};
+		this.isVisit	  = false
+		this.isDiagnose   = false
+		this.isStudy	  = false
+		this.isTreatment  = false
+		this.isProcedure  = false
+	}
 
 	activate(){
-		this.resetEntries();
-		this.isVisit = true;
-		this.imageLoading = false;
-	};
+		this.resetEntries()
+		this.isVisit = true
+		this.imageLoading = false
+	}
 
 	toggleVisit () {
 		this.resetEntries();
@@ -67,9 +71,9 @@ export class Entry{
     this.fileName = file.name;
     console.log ("File Name: " + this.fileName);
     reader.onload = () => {
-        //this.imageLoading = false;  // we need to find a place later in the flow to deactivate imageLoading
         this.file = reader.result;
         console.log ("File Content: " + this.file);
+        this.imageLoading = false;  // we need to find a place later in the flow to deactivate imageLoad
     };
     
 }
