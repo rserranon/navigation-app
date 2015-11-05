@@ -5,7 +5,7 @@ import 'fetch';
 @inject(HttpClient)
 export class Timeline{
   heading = 'Timeline';
-  entries = [];
+  timeline = [];
 
   constructor(http){
     http.configure(config => {
@@ -24,6 +24,7 @@ export class Timeline{
             },
             response(response) {
                 console.log(`Received ${response.status} ${response.url}`);
+                console.log(response);
                 return response; // you can return a modified Response
             }
         });	
@@ -32,9 +33,16 @@ export class Timeline{
   )}
 
   activate(){
-    return this.http.fetch('entry/index.json')
+    return this.http.fetch('person/myTimeline/5.json')
       .then(response => response.json())
-      .then(entries =>  this.entries = entries);
+      .then(timeline => { 
+        this.timeline = timeline;
+        for(var key in timeline.content.years) {
+            var val = timeline.content.years[key];
+            console.log("TIMELINE: "+key+" value:"+val);
+        };
+        console.log('timeline -> ' + Object.keys(timeline));
+      });      
   }
 }
 
